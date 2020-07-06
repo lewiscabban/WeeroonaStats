@@ -1,0 +1,16 @@
+<%- include("header") -%>
+
+  <div class="box" id="heading">
+    <h1> Players </h1>
+  </div>
+
+  <div class="box">
+    <% allPlayers.forEach(function(player) { %>
+        <p><%= player.firstName %> <%= player.lastName %></p>
+        <%  player.highlights.forEach(function(highlight) { %>
+            <p><%= highlight.type %></p>
+        <% });  %>
+    <% }); %>
+  </div>
+
+<%- include("footer") -%>
