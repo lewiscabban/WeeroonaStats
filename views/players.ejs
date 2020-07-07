@@ -1,16 +1,58 @@
 <%- include("header") -%>
 
-  <div class="box" id="heading">
+  <div id="heading">
     <h1> Players </h1>
+    <!-- Search form -->
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search By Name" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
   </div>
 
-  <div class="box">
-    <% allPlayers.forEach(function(player) { %>
-        <p><%= player.firstName %> <%= player.lastName %></p>
-        <%  player.highlights.forEach(function(highlight) { %>
-            <p><%= highlight.type %></p>
-        <% });  %>
-    <% }); %>
+  <div class="box-table">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Total Games</th>
+          <th scope="col">Total Goals</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr> -->
+        <% count = 1; %>
+        <% allPlayers.forEach(function(player) { %>
+          <tr>
+            <th scope="row"><%= count %><% count++; %></th>
+            <td><%= player.firstName %> <%= player.lastName %></td>
+            <td><%= player.games %></td>
+            <td><%= player.goals %></td>
+            <!-- <p><%= player.firstName %> <%= player.lastName %></p>
+            <%  player.highlights.forEach(function(highlight) { %>
+              <p><%= highlight.type %></p>
+            <% });  %> -->
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
   </div>
 
 <%- include("footer") -%>

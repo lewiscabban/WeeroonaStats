@@ -18,7 +18,7 @@ mongoose.connect("mongodb://localhost:27017/weeroonaStats", {useNewUrlParser: tr
 
 
 //Constructing the database
-const playerGameStatsSchema = new mongoose.Schema ({
+const playerGameStatSchema = new mongoose.Schema ({
   playerID: String,
   gameID: String,
   goals: Number,
@@ -35,7 +35,9 @@ const highlightSchema = new mongoose.Schema ({
 const playerSchema = new mongoose.Schema ({
   firstName: String,
   lastName: String,
-  gamesPlayed: [playerGameStatsSchema],
+  games: Number,
+  goals: Number,
+  gamesPlayed: [playerGameStatSchema],
   address: String,
   suburb: String,
   state: String,
@@ -68,32 +70,43 @@ const Player = mongoose.model("Player", playerSchema);
 
 const Highlight = mongoose.model("Highlight", highlightSchema);
 
-const highlight1 = new Player ({
-  type: "Debute",
-  description: "debute agasinst South Whyalla, Win",
+const PlayerGameStat = mongoose.model("PlayerGamesStat", playerGameStatSchema);
+
+const playergame1 = new PlayerGameStat ({
+  goals: 4,
+  behinds: 3
 });
-const highlight2 = new Player ({
-  type: "50 games",
-  description: "50th game against West Whyalla, Win",
+const playergame2 = new PlayerGameStat ({
+  goals: 2,
+  behinds: 1
 });
 
 const player1 = new Player ({
   firstName: "Lewis",
   lastName: "Cabban",
+  goals: 6,
+  games: 2,
   highlights: [{
     type: "Debute",
     description: "debute agasinst South Whyalla, Win",
   },{
     type: "50 games",
     description: "50th game against West Whyalla, Win",
-  }]
+  }],
+  gamesPlayed: [playergame1,playergame2]
 });
 const player2 = new Player ({
   firstName: "Tom",
   lastName: "Fischer",
+  goals: 4,
+  games: 1,
   highlights: [{
     type: "50 games",
     description: "50th game against West Whyalla, Win",
+  }],
+  gamesPlayed: [{
+    goals: 4,
+    behinds: 3
   }]
 });
 
