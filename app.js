@@ -10,7 +10,7 @@ const app = express();
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static("public"));
+app.use(express.static(__dirname + '/public'));
 
 mongoose.connect("mongodb://localhost:27017/weeroonaStats", {useNewUrlParser: true});
 
@@ -113,7 +113,7 @@ const player2 = new Player ({
 const defaultPlayers = [player1, player2];
 
 //handling requests made to the server
-app.get("/", function(req, res) {
+app.get("/players", function(req, res) {
 
   Player.find({}, function(err, found){
 
@@ -126,7 +126,7 @@ app.get("/", function(req, res) {
           console.log("successfully saved items into the DB");
         }
       });
-      res.redirect("/");
+      res.redirect("/players");
     } else {
       found.forEach(function(foundPlayer){
         Highlight.find({_id: foundPlayer.highlights}, function(err, foundHighlights) {
@@ -136,34 +136,57 @@ app.get("/", function(req, res) {
         });
       });
       
-    res.render("players", {listTitle: "Today", allPlayers: found});
+    res.render("players", {allPlayers: found});
     }
     console.log(found);
   })
 });
 
-// app.get("/:customListName", function(req,res){
-//   const customListName = _.capitalize(req.params.customListName);
+//handling requests made to the server
+app.get("/highlights", function(req, res) {
 
-//   List.findOne({name: customListName}, function(err, foundList){
-//     if(!err){
-//       if(!foundList){
-//         //create a new list
-//         const list = new List({
-//           name: customListName,
-//           items: defaultItems
-//         });
-//         list.save();
-//         res.redirect("/" + customListName);
-//       } else {
-//         //show the existing list
-//         res.render("list", {listTitle: foundList.name, newListItems: foundList.items});
-//       }
-//     }
-//   })
+  Player.find({}, function(err, found){
 
+    if(found.length == 0){
+      Player.insertMany(defaultPlayers, function(err){
+        if (err){
+          console.log(err);
+        }
+        else {
+          console.log("successfully saved items into the DB");
+        }
+      });
+      res.redirect("/players");
+    } else {
+      found.forEach(function(foundPlayer){
+        Highlight.find({_id: foundPlayer.highlights}, function(err, foundHighlights) {
+          foundPlayer.highlights.forEach(function(foundPlayerHighlight) {
+            console.log(foundPlayerHighlight);
+          });
+        });
+      });
+      
+    res.render("highlights", {allPlayers: found});
+    }
+    console.log(found);
+  })
+});
+
+app.get("/players/:id", function(req,res){
+  const id = _.capitalize(req.params.id);
   
-// })
+  Player.findOne({_id: id}, function(err, foundPlayer){
+    if(!err){
+      if(!foundPlayer){
+        //player not found
+        console.log("requested player not in database");
+      } else {
+        //show the existing players stats
+        res.render("player", {player: foundPlayer});
+      }
+    }
+  })
+});
 
 // app.post("/", function(req, res){
 

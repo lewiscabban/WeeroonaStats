@@ -14,8 +14,15 @@ body {
   box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
 }
 
+.small-box-table {
+  margin: 20px 0px 20px 0px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+}
+
 .box {
-  margin: 20px 50px 20px 50px;
+  margin: 20px 4% 20px 4%;
   background: white;
 }
 
@@ -23,3 +30,6 @@ body {
   margin: 50px 50px 20px 50px;
 }
 
+.content {
+  margin: 50px auto;
+}
