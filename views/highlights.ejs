@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="css/styles.css">
 
   <div id="heading">
-    <h1> Players </h1>
+    <h1> Highlights </h1>
     <!-- Search form -->
     <form class="form-inline">
       <input class="form-control mr-sm-2" type="search" placeholder="Search By Name" aria-label="Search">
@@ -16,19 +16,21 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Name</th>
-          <th scope="col">Total Games</th>
-          <th scope="col">Total Goals</th>
+          <th scope="col">Highlight Type</th>
+          <th scope="col">Highlight Description</th>
         </tr>
       </thead>
       <tbody>
         <% count = 1; %>
         <% allPlayers.forEach(function(player) { %>
-          <tr>
-            <th scope="row"><%= count %><% count++; %></th>
-            <td><a href="/players/<%= player._id %>"><%= player.firstName %> <%= player.lastName %></a></td>
-            <td><%= player.games %></td>
-            <td><%= player.goals %></td>
-          </tr>
+          <% player.highlights.forEach(function(highlight) { %>
+            <tr>
+              <th scope="row"><%= count %><% count++; %></th>
+              <td><%= player.firstName %> <%= player.lastName %></td>
+              <td><%= highlight.type %></td>
+              <td><%= highlight.description %></td>
+            </tr>
+          <% }); %>
         <% }); %>
       </tbody>
     </table>
