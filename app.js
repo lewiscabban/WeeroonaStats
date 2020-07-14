@@ -66,6 +66,8 @@ const gameSchema = new mongoose.Schema ({
   players: [playerSchema]
 });
 
+const Game = mongoose.model("Game", gameSchema);
+
 const Player = mongoose.model("Player", playerSchema);
 
 const Highlight = mongoose.model("Highlight", highlightSchema);
@@ -85,7 +87,7 @@ const player1 = new Player ({
   firstName: "Lewis",
   lastName: "Cabban",
   goals: 6,
-  games: 2,
+  games: 2, 
   highlights: [{
     type: "Debute",
     description: "debute agasinst South Whyalla, Win",
@@ -111,6 +113,24 @@ const player2 = new Player ({
 });
 
 const defaultPlayers = [player1, player2];
+
+const game1 = new Game ({
+  result: String,
+  grade: String,
+  date: Date,
+  opponent: String,
+  year: Number,
+  round: Number,
+  forGoals: Number,
+  forBehinds: Number,
+  againstGoals: Number,
+  againstBehinds: Number,
+  coach: String,
+  assistant: String,
+  Captian: String,
+  vice: String,
+  players: [playerSchema]
+})
 
 //handling requests made to the server
 app.get("/players", function(req, res) {
