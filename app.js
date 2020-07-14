@@ -65,16 +65,26 @@ const gameSchema = new mongoose.Schema ({
 });
 
 const Player = mongoose.model("Player", playerSchema);
-
+const PlayerGameStats = mongoose.model("PlayerGameStats", playerGameStatsSchema);
+const Game = mongoose.model("Game", gameSchema);
 const Highlight = mongoose.model("Highlight", highlightSchema);
 
-const highlight1 = new Player ({
-  type: "Debute",
-  description: "debute agasinst South Whyalla, Win",
+const highlight1 = new Highlight ({
+  goals: 1,
+  behinds: 2
 });
-const highlight2 = new Player ({
+const highlight2 = new Highlight ({
+  goals: 1,
+  behinds: 2
+});
+
+const playerGameStats1 = new PlayerGameStats ({
+  type: "Debute",
+  description: "debute agasinst South Whyalla, Win"
+});
+const playerGameStats2 = new PlayerGameStats ({
   type: "50 games",
-  description: "50th game against West Whyalla, Win",
+  description: "50th game against West Whyalla, Win"
 });
 
 const player1 = new Player ({
@@ -95,6 +105,39 @@ const player2 = new Player ({
     type: "50 games",
     description: "50th game against West Whyalla, Win",
   }]
+});
+
+const game1 = new Game ({
+  result: "Win",
+  grade: "A",
+  date: new Date("2020-07-01"),
+  opponent: "West Whyalla",
+  round: 1,
+  forGoals: 15,
+  forBehinds: 12,
+  againstGoals: 8,
+  againstBehinds: 19,
+  coach: "Craig Inglas",
+  assistant: "Jason Reece",
+  Captian: "Owen Yendell",
+  vice: "Dylan slkjfjkld",
+  players: [player1, player2]
+});
+const game2 = new Game ({
+  result: "Win",
+  grade: "A",
+  date: new Date("2020-07-08"),
+  opponent: "North Whyalla",
+  round: 1,
+  forGoals: 34,
+  forBehinds: 23,
+  againstGoals: 1,
+  againstBehinds: 3,
+  coach: "Craig Inglas",
+  assistant: "Jason Reece",
+  Captian: "Owen Yendell",
+  vice: "Dylan slkjfjkld",
+  players: [player1, player2]
 });
 
 const defaultPlayers = [player1, player2];
