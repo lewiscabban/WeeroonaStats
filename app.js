@@ -66,21 +66,28 @@ const gameSchema = new mongoose.Schema ({
   players: [playerSchema]
 });
 
-const Game = mongoose.model("Game", gameSchema);
 
 const Player = mongoose.model("Player", playerSchema);
-
+const PlayerGameStats = mongoose.model("PlayerGameStats", playerGameStatSchema);
+const Game = mongoose.model("Game", gameSchema);
 const Highlight = mongoose.model("Highlight", highlightSchema);
 
-const PlayerGameStat = mongoose.model("PlayerGamesStat", playerGameStatSchema);
-
-const playergame1 = new PlayerGameStat ({
-  goals: 4,
-  behinds: 3
+const highlight1 = new Highlight ({
+  goals: 1,
+  behinds: 2
 });
-const playergame2 = new PlayerGameStat ({
-  goals: 2,
-  behinds: 1
+const highlight2 = new Highlight ({
+  goals: 1,
+  behinds: 2
+});
+
+const playerGameStats1 = new PlayerGameStats ({
+  type: "Debute",
+  description: "debute agasinst South Whyalla, Win"
+});
+const playerGameStats2 = new PlayerGameStats ({
+  type: "50 games",
+  description: "50th game against West Whyalla, Win"
 });
 
 const player1 = new Player ({
@@ -95,7 +102,14 @@ const player1 = new Player ({
     type: "50 games",
     description: "50th game against West Whyalla, Win",
   }],
-  gamesPlayed: [playergame1,playergame2]
+  gamesPlayed: [playerGameStats1,playerGameStats2],
+  address: "12 Barter Street",
+  suburb: "Whyalla Playford",
+  state: "SA",
+  postcode: "5600",
+  homeNumber: "NA",
+  moblieNumber: "0428451950",
+  fax: "NA"
 });
 const player2 = new Player ({
   firstName: "Tom",
@@ -109,28 +123,50 @@ const player2 = new Player ({
   gamesPlayed: [{
     goals: 4,
     behinds: 3
-  }]
+  }],
+  address: "3 Raws Street",
+  suburb: "Whyalla Playford",
+  state: "SA",
+  postcode: "5600",
+  homeNumber: "NA",
+  moblieNumber: "NA",
+  fax: "NA"
+});
+
+const game1 = new Game ({
+  result: "Win",
+  grade: "A",
+  date: new Date("2020-07-01"),
+  opponent: "West Whyalla",
+  round: 1,
+  forGoals: 15,
+  forBehinds: 12,
+  againstGoals: 8,
+  againstBehinds: 19,
+  coach: "Craig Inglas",
+  assistant: "Jason Reece",
+  Captian: "Owen Yendell",
+  vice: "Dylan slkjfjkld",
+  players: [player1, player2]
+});
+const game2 = new Game ({
+  result: "Win",
+  grade: "A",
+  date: new Date("2020-07-08"),
+  opponent: "North Whyalla",
+  round: 2,
+  forGoals: 34,
+  forBehinds: 23,
+  againstGoals: 1,
+  againstBehinds: 3,
+  coach: "Craig Inglas",
+  assistant: "Jason Reece",
+  Captian: "Owen Yendell",
+  vice: "Dylan slkjfjkld",
+  players: [player1, player2]
 });
 
 const defaultPlayers = [player1, player2];
-
-const game1 = new Game ({
-  result: String,
-  grade: String,
-  date: Date,
-  opponent: String,
-  year: Number,
-  round: Number,
-  forGoals: Number,
-  forBehinds: Number,
-  againstGoals: Number,
-  againstBehinds: Number,
-  coach: String,
-  assistant: String,
-  Captian: String,
-  vice: String,
-  players: [playerSchema]
-})
 
 //handling requests made to the server
 app.get("/players", function(req, res) {
@@ -159,6 +195,28 @@ app.get("/players", function(req, res) {
     res.render("players", {allPlayers: found});
     }
     console.log(found);
+  })
+});
+
+//handling requests made to the server
+app.get("/games", function(req, res) {
+
+  Game.find({}, function(err, found){
+
+    if(found.length == 0){
+      Game.insertMany([game1, game2], function(err){
+        if (err){
+          console.log(err);
+        }
+        else {
+          console.log("successfully saved items into the DB");
+        }
+      });
+      res.redirect("/games");
+    } else {
+      console.log(found);
+      res.render("games", {allGames: found});
+    }
   })
 });
 
