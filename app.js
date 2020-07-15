@@ -102,7 +102,14 @@ const player1 = new Player ({
     type: "50 games",
     description: "50th game against West Whyalla, Win",
   }],
-  gamesPlayed: [playerGameStats1,playerGameStats2]
+  gamesPlayed: [playerGameStats1,playerGameStats2],
+  address: "12 Barter Street",
+  suburb: "Whyalla Playford",
+  state: "SA",
+  postcode: "5600",
+  homeNumber: "NA",
+  moblieNumber: "0428451950",
+  fax: "NA"
 });
 const player2 = new Player ({
   firstName: "Tom",
@@ -116,7 +123,14 @@ const player2 = new Player ({
   gamesPlayed: [{
     goals: 4,
     behinds: 3
-  }]
+  }],
+  address: "3 Raws Street",
+  suburb: "Whyalla Playford",
+  state: "SA",
+  postcode: "5600",
+  homeNumber: "NA",
+  moblieNumber: "NA",
+  fax: "NA"
 });
 
 const game1 = new Game ({
