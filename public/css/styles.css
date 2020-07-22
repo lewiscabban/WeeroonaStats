@@ -1,10 +1,12 @@
 html {
-  min-height: 1000px;
+  min-height: 950px;
   font-family: 'helvetica neue';
+  overflow-x: hidden;
 }
 
 body {
   padding-top: 20px;
+  font-family: "Montserrat", sans-serif;
 }
 
 .box-table {
@@ -21,8 +23,14 @@ body {
 }
 
 .box {
-  margin: 20px 4% 20px 4%;
-  background: white;
+  background: #333;
+  text-align: center;
+  color: white;
+  height: 100px;
+  width: 100%;
+  bottom: 0;
+  padding: 2rem;
+  position: fixed;
 }
 
 #heading {
@@ -74,4 +82,54 @@ body {
   text-decoration: none;
   color: #333;
   font-weight: 600;
+}
+
+.home-logo {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.weerona-stats {
+  text-align: center;
+  font-size: 8rem;
+  font-family: "Kalam", cursive;
+  color: #333;
+  margin-top: 0;
+}
+
+.home-nav {
+  display: block;
+  border-radius: 15px;
+  padding: 2% 10%;
+}
+
+.home-icons {
+  font-size: 6rem;
+  color: #333;
+}
+
+.home-selections {
+  color: #f5ab00;
+}
+
+.icon-nav-bar {
+  text-align: center;
+  padding: 5%;
+}
+
+.home-button-heading {
+  color: #f5ab00;
+}
+
+.home-button-desc {
+  color: grey;
+}
+
+.home-nav:hover {
+  text-decoration: none;
+  background-color:#f2f2f2;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #f5ab00;
 }
