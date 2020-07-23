@@ -198,6 +198,45 @@ app.get("/players", function(req, res) {
   })
 });
 
+//individual player page
+app.get("/players/:id", function(req,res){
+  const id = _.capitalize(req.params.id);
+  
+  Player.findOne({_id: id}, function(err, foundPlayer){
+    if(!err){
+      if(!foundPlayer){
+        //player not found
+        console.log("requested player not in database");
+      } else {
+        //show the existing players stats
+        res.render("player", {player: foundPlayer});
+      }
+    }
+  })
+});
+
+//add player page
+app.get("/addPlayer", function(req,res){
+  res.render("addPlayer");
+});
+
+//edit player page
+app.get("/players/:id/edit", function(req,res){
+  const id = _.capitalize(req.params.id);
+  
+  Player.findOne({_id: id}, function(err, foundPlayer){
+    if(!err){
+      if(!foundPlayer){
+        //player not found
+        console.log("requested player not in database");
+      } else {
+        //show the existing players stats
+        res.render("editPlayer", {player: foundPlayer});
+      }
+    }
+  })
+});
+
 //handling requests made to the server
 app.get("/games", function(req, res) {
 
@@ -250,43 +289,37 @@ app.get("/highlights", function(req, res) {
   })
 });
 
-app.get("/players/:id", function(req,res){
-  const id = _.capitalize(req.params.id);
-  
-  Player.findOne({_id: id}, function(err, foundPlayer){
-    if(!err){
-      if(!foundPlayer){
-        //player not found
-        console.log("requested player not in database");
-      } else {
-        //show the existing players stats
-        res.render("player", {player: foundPlayer});
-      }
+app.post("/addPlayer", function(req, res){
+
+  const tempPlayer = req.body.newPlayer;
+
+  const player = new Player({
+    firstName: tempPlayer.firstName,
+    lastName: tempPlayer.lastName,
+    goals: 0,
+    games: 0,
+    address: tempPlayer.address,
+    suburb: tempPlayer.suburb,
+    state: tempPlayer.state,
+    postcode: tempPlayer.postcode,
+    homeNumber: tempPlayer.homeNumber,
+    moblieNumber: tempPlayer.moblieNumber,
+    fax: tempPlayer.faxNumber
+  });
+
+  Player.insertMany([player], function(err){
+    if (err){
+      console.log(err);
     }
-  })
+    else {
+      console.log("successfully saved player into the DB");
+    }
+  });
+
+  player.save();
+  res.redirect("/players");
+
 });
-
-// app.post("/", function(req, res){
-
-//   const itemName = req.body.newItem;
-//   const listName = req.body.list;
-
-//   const item = new Item({
-//     name: itemName
-//   });
-
-//   if (listName === "Today"){
-//     item.save();
-//     res.redirect("/");
-//   } else {
-//     List.findOne({name: listName}, function(err, foundList){
-//       foundList.items.push(item);
-//       foundList.save();
-//       res.redirect("/" + listName);
-//     })
-//   }
-
-// });
 
 // app.post("/delete", function(req,res){
 //   const checkedItemId = req.body.deleteBox;
