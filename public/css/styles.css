@@ -1,3 +1,4 @@
+/*----Basic Elements----*/
 html {
   min-height: 950px;
   font-family: 'helvetica neue';
@@ -9,6 +10,16 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+#heading {
+  margin: 50px 50px 20px 50px;
+}
+
+.content {
+  margin: 50px auto;
+}
+
+
+/*----Tables----*/
 .box-table {
   margin: 20px 50px 20px 50px;
   background: white;
@@ -22,7 +33,9 @@ body {
   box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
 }
 
-.box {
+
+/*----Footer----*/
+.foot {
   background: #333;
   text-align: center;
   color: white;
@@ -33,17 +46,12 @@ body {
   position: fixed;
 }
 
-#heading {
-  margin: 50px 50px 20px 50px;
+/*----Navbar----*/
+.navbar-inverse .navbar-brand {
+  color: #f5ab00;
 }
 
-.content {
-  margin: 50px auto;
-}
-
-
-
-/* tab tables for player page */
+/*----Player Page Tab Tables----*/
 .project-tab {
   padding: 10%;
   margin-top: -8%;
@@ -84,12 +92,14 @@ body {
   font-weight: 600;
 }
 
+
+/*----Home Page----*/
 .home-logo {
   text-align: center;
   margin-top: 40px;
 }
 
-.weerona-stats {
+.statistics-title {
   text-align: center;
   font-size: 8rem;
   font-family: "Kalam", cursive;
@@ -97,39 +107,32 @@ body {
   margin-top: 0;
 }
 
-.home-nav {
+/*----Home Page Navbar----*/
+.home-nav-col {
   display: block;
   border-radius: 15px;
   padding: 2% 10%;
 }
 
-.home-icons {
-  font-size: 6rem;
-  color: #333;
-}
-
-.home-selections {
-  color: #f5ab00;
-}
-
-.icon-nav-bar {
+.home-nav-row {
   text-align: center;
   padding: 5%;
 }
 
-.home-button-heading {
+.home-nav-icons {
+  font-size: 6rem;
+  color: #333;
+}
+
+.home-nav-heading {
   color: #f5ab00;
 }
 
-.home-button-desc {
+.home-nav-desc {
   color: grey;
 }
 
-.home-nav:hover {
+.home-nav-col:hover {
   text-decoration: none;
   background-color:#f2f2f2;
-}
-
-.navbar-inverse .navbar-brand {
-  color: #f5ab00;
 }

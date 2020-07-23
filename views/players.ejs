@@ -1,22 +1,23 @@
-<%- include("header") -%>
-<link rel="stylesheet" href="css/styles.css">
-
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/index">Weeroona Stats</a>
+  <%- include("header") -%>
+</head>
+  
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/index">Weeroona Stats</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/players">Players</a></li>
+        <li><a href="/games">Games</a></li>
+        <li><a href="/highlights">Highlights</a></li>
+      </ul>
     </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="/players">Players</a></li>
-      <li><a href="/games">Games</a></li>
-      <li><a href="/highlights">Highlights</a></li>
-    </ul>
-  </div>
-</nav>
+  </nav>
 
   <div id="heading">
     <h1> Players </h1>
-    <!-- Search form -->
+    <!-----Search Bar----->
     <form class="form-inline">
       <input class="form-control mr-sm-2" type="search" placeholder="Search By Name" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -47,4 +48,4 @@
     </table>
   </div>
 
-<%- include("footer") -%>
+  <%- include("footer") -%>

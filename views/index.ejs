@@ -1,51 +1,34 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head>
-        <title>Weeroona Stats</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" href="http://www.weeroonabayfc.com.au/Header/image002a.jpg">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <%- include("header") -%>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://kit.fontawesome.com/92b8cd33c5.js" crossorigin="anonymous"></script>
+    <!-----Fonts----->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap" rel="stylesheet">
 
-        <link rel="stylesheet" href="css/styles.css">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap" rel="stylesheet">
-    </head>
-    
-    <body>
-        <div class="container-fluid home-logo">
-            <img src="/images/weerona-logo.png" width="20%" height="30%" alt="Weerona Logo">
-            <h1 class="weerona-stats">Statistics</h1>
-        </div>
-        <div class="row icon-nav-bar">
-            <a href="/players" class="col-lg-4 home-nav">
-                <i class="fas fa-running home-icons"></i> 
-                <h3 class="home-button-heading"><strong>Players</strong></h3>
-                <p class="home-button-desc">Selection of all players at Weerona Bay Football Club.</p>
-            </a>
-            <a href="/games" class="col-lg-4 home-nav">
-                <i class="fas fa-football-ball home-icons"></i>
-                <h3 class="home-button-heading"><strong>Games</strong></h3>
-                <p class="home-button-desc">Collection of all games by season.</p>
-            </a>
-            <a href="/highlights" class="col-lg-4 home-nav">
-            <i class="fas fa-award home-icons"></i>
-            <h3 class="home-button-heading"><strong>Highlights</strong></h3>
-            <p class="home-button-desc">See which players are about to hit a milestone!</p>
-            </a>
-        </div>
+    <!-----FontAwesome Icons----->
+    <script src="https://kit.fontawesome.com/92b8cd33c5.js" crossorigin="anonymous"></script>
+</head>
+  
+<body>
+    <div class="container-fluid home-logo">
+        <img src="/images/weerona-logo.png" width="20%" height="30%" alt="Weerona Bay Football Club Logo">
+        <h1 class="statistics-title">Statistics</h1>
+    </div>
+    <div class="row home-nav-row">
+        <a href="/players" class="col-lg-4 home-nav-col">
+            <i class="fas fa-running home-nav-icons"></i> 
+            <h3 class="home-nav-heading"><strong>Players</strong></h3>
+            <p class="home-nav-desc">Selection of all players at Weerona Bay Football Club.</p>
+        </a>
+        <a href="/games" class="col-lg-4 home-nav-col">
+            <i class="fas fa-football-ball home-nav-icons"></i>
+            <h3 class="home-nav-heading"><strong>Games</strong></h3>
+            <p class="home-nav-desc">Collection of all games by season.</p>
+        </a>
+        <a href="/highlights" class="col-lg-4 home-nav-col">
+            <i class="fas fa-award home-nav-icons"></i>
+            <h3 class="home-nav-heading"><strong>Highlights</strong></h3>
+            <p class="home-nav-desc">See which players are about to hit a milestone!</p>
+        </a>
+    </div>
 
-        <footer>
-            <div class="box">
-              © Copyright 2020 Weeroona Bay Football Club
-              <img src="/images/weerona-logo.png" width="55px" height="50px" alt="Weerona Logo">
-            </div>
-          </footer>
-    </body>
-</html>
+    <%- include("footer") -%>
