@@ -111,6 +111,7 @@ const player1 = new Player ({
   moblieNumber: "0428451950",
   fax: "NA"
 });
+
 const player2 = new Player ({
   firstName: "Tom",
   lastName: "Fischer",
@@ -171,11 +172,11 @@ const defaultPlayers = [player1, player2];
 //handling requests made to the server
 app.get("/", function(req, res) {
   res.render("index");
-})
+});
 
 app.get("/index", function(req, res) {
   res.render("index");
-})
+});
 
 app.get("/players", function(req, res) {
 

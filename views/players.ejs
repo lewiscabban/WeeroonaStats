@@ -19,12 +19,14 @@
     <h1> Players </h1>
     <!-----Search Bar----->
     <form class="form-inline">
+      <button class="btn top5-button players-button" type="button" onclick="togglePlayers()">Top 5 Players</button>
       <input class="form-control mr-sm-2" type="search" placeholder="Search By Name" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <button class="btn btn-outline-success my-2 my-sm-0 search-button players-button" type="submit">Search</button>
+      
     </form>
   </div>
 
-  <div class="box-table">
+  <div class="box-table players-table">
     <table class="table">
       <thead class="thead-dark">
         <tr>
@@ -47,5 +49,55 @@
       </tbody>
     </table>
   </div>
+
+  <div class="box-table top5-table" style="display: none">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Player</th>
+          <th scope="col">Last Year Played</th>
+          <th scope="col">League Games</th>
+          <th scope="col">Reserve Games</th>
+          <th scope="col">Total Club Games</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% allPlayers.forEach(function(player) { %>
+          <tr>
+            <th scope="row"><a href="/players/<%= player._id %>"><%= player.firstName + " " + player.lastName %></a></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    var top5 = false;
+
+    function togglePlayers(){
+      if(top5 === false)
+      {
+        document.querySelector("h1").innerHTML = "Top 5 Club Players";
+        top5 = true;
+
+        document.querySelector(".players-table").style.display = "none";
+        document.querySelector(".top5-table").style.display = "block";
+        document.querySelector(".top5-button").classList.add("top5-clicked");
+      }
+      else
+      {
+        document.querySelector("h1").innerHTML = "Players";
+        top5 = false;
+
+        document.querySelector(".players-table").style.display = "block";
+        document.querySelector(".top5-table").style.display = "none";
+        document.querySelector(".top5-button").classList.remove("top5-clicked");
+      }
+    }
+  </script>
 
   <%- include("footer") -%>

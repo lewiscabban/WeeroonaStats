@@ -136,3 +136,34 @@ body {
   text-decoration: none;
   background-color:#f2f2f2;
 }
+
+/*----Players Page Buttons----*/
+.players-button {
+  border: 1px solid black;
+  background-color: #333;
+  color: #f5ab00;
+}
+
+.players-button:hover {
+  background-color: black;
+  color: white;
+}
+
+.top5-button:focus {
+  border: 1px solid black;
+  background-color: #333;
+  color: #f5ab00;
+  outline: none;
+}
+
+.top5-clicked {
+  background-color: black;
+  color: white;
+}
+
+.top5-clicked:focus {
+  background-color: black;
+  color: white;
+  outline: none;
+}
+
