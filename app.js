@@ -202,7 +202,7 @@ app.get("/players", function(req, res) {
       
     res.render("players", {allPlayers: found});
     }
-    console.log(found);
+    //console.log(found);
   })
 });
 
@@ -313,17 +313,17 @@ app.get("/highlights", function(req, res) {
       });
       res.redirect("/players");
     } else {
-      found.forEach(function(foundPlayer){
-        Highlight.find({_id: foundPlayer.highlights}, function(err, foundHighlights) {
-          foundPlayer.highlights.forEach(function(foundPlayerHighlight) {
-            console.log(foundPlayerHighlight);
-          });
-        });
-      });
+      // found.forEach(function(foundPlayer){
+      //   Highlight.find({_id: foundPlayer.highlights}, function(err, foundHighlights) {
+      //     foundPlayer.highlights.forEach(function(foundPlayerHighlight) {
+      //       console.log(foundPlayerHighlight);
+      //     });
+      //   });
+      // });
       
     res.render("highlights", {allPlayers: found});
     }
-    console.log(found);
+    //console.log(found);
   })
 });
 
