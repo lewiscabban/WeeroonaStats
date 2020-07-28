@@ -169,6 +169,14 @@ const game2 = new Game ({
 const defaultPlayers = [player1, player2];
 
 //handling requests made to the server
+app.get("/", function(req, res) {
+  res.render("index");
+})
+
+app.get("/index", function(req, res) {
+  res.render("index");
+})
+
 app.get("/players", function(req, res) {
 
   Player.find({}, function(err, found){

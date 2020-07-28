@@ -1,0 +1,34 @@
+    <%- include("header") -%>
+
+    <!-----Fonts----->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap" rel="stylesheet">
+
+    <!-----FontAwesome Icons----->
+    <script src="https://kit.fontawesome.com/92b8cd33c5.js" crossorigin="anonymous"></script>
+</head>
+  
+<body>
+    <div class="container-fluid home-logo">
+        <img src="/images/weerona-logo.png" width="20%" height="30%" alt="Weerona Bay Football Club Logo">
+        <h1 class="statistics-title">Statistics</h1>
+    </div>
+    <div class="row home-nav-row">
+        <a href="/players" class="col-lg-4 home-nav-col">
+            <i class="fas fa-running home-nav-icons"></i> 
+            <h3 class="home-nav-heading"><strong>Players</strong></h3>
+            <p class="home-nav-desc">Selection of all players at Weerona Bay Football Club.</p>
+        </a>
+        <a href="/games" class="col-lg-4 home-nav-col">
+            <i class="fas fa-football-ball home-nav-icons"></i>
+            <h3 class="home-nav-heading"><strong>Games</strong></h3>
+            <p class="home-nav-desc">Collection of all games by season.</p>
+        </a>
+        <a href="/highlights" class="col-lg-4 home-nav-col">
+            <i class="fas fa-award home-nav-icons"></i>
+            <h3 class="home-nav-heading"><strong>Highlights</strong></h3>
+            <p class="home-nav-desc">See which players are about to hit a milestone!</p>
+        </a>
+    </div>
+
+    <%- include("footer") -%>
