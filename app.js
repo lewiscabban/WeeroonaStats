@@ -184,13 +184,13 @@ app.get("/players", function(req, res) {
       });
       res.redirect("/players");
     } else {
-      found.forEach(function(foundPlayer){
-        Highlight.find({_id: foundPlayer.highlights}, function(err, foundHighlights) {
-          foundPlayer.highlights.forEach(function(foundPlayerHighlight) {
-            console.log(foundPlayerHighlight);
-          });
-        });
-      });
+      // found.forEach(function(foundPlayer){
+      //   Highlight.find({_id: foundPlayer.highlights}, function(err, foundHighlights) {
+      //     foundPlayer.highlights.forEach(function(foundPlayerHighlight) {
+      //       console.log(foundPlayerHighlight);
+      //     });
+      //   });
+      // });
       
     res.render("players", {allPlayers: found});
     }
@@ -218,6 +218,37 @@ app.get("/players/:id", function(req,res){
 //add player page
 app.get("/addPlayer", function(req,res){
   res.render("addPlayer");
+});
+
+app.post("/newPlayer", function(req, res){
+  console.log("adding new player");
+
+  const player = new Player({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    goals: 0,
+    games: 0,
+    address: req.body.address,
+    suburb: req.body.suburb,
+    state: req.body.state,
+    postcode: req.body.postcode,
+    homeNumber: req.body.homeNumber,
+    moblieNumber: req.body.moblieNumber,
+    fax: req.body.faxNumber
+  });
+
+  Player.insertMany([player], function(err){
+    if (err){
+      console.log(err);
+    }
+    else {
+      console.log("successfully saved player into the DB");
+      player.save();
+    }
+  });
+
+  res.redirect("/players");
+
 });
 
 //edit player page
@@ -253,7 +284,6 @@ app.get("/games", function(req, res) {
       });
       res.redirect("/games");
     } else {
-      console.log(found);
       res.render("games", {allGames: found});
     }
   })
@@ -287,38 +317,6 @@ app.get("/highlights", function(req, res) {
     }
     console.log(found);
   })
-});
-
-app.post("/addPlayer", function(req, res){
-
-  const tempPlayer = req.body.newPlayer;
-
-  const player = new Player({
-    firstName: tempPlayer.firstName,
-    lastName: tempPlayer.lastName,
-    goals: 0,
-    games: 0,
-    address: tempPlayer.address,
-    suburb: tempPlayer.suburb,
-    state: tempPlayer.state,
-    postcode: tempPlayer.postcode,
-    homeNumber: tempPlayer.homeNumber,
-    moblieNumber: tempPlayer.moblieNumber,
-    fax: tempPlayer.faxNumber
-  });
-
-  Player.insertMany([player], function(err){
-    if (err){
-      console.log(err);
-    }
-    else {
-      console.log("successfully saved player into the DB");
-    }
-  });
-
-  player.save();
-  res.redirect("/players");
-
 });
 
 // app.post("/delete", function(req,res){
