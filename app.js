@@ -229,38 +229,6 @@ app.get("/addPlayer", function(req,res){
   res.render("addPlayer");
 });
 
-app.post("/players/:id/editPlayer", function(req, res){
-  console.log(req.params.id);
-  console.log(req.body.id);
-
-  Player.findOne({_id: id}, function(err, foundPlayer){
-    console.log("editing player with id: " + foundPlayer._id);
-
-    /*Player.updateOne({_id: foundPlayer._id}, {
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      goals: req.body.goals,
-      games: req.body.games,
-      address: req.body.address,
-      suburb: req.body.suburb,
-      state: req.body.state,
-      postcode: req.body.postcode,
-      homeNumber: req.body.homeNumber,
-      moblieNumber: req.body.moblieNumber,
-      fax: req.body.faxNumber
-      }, function(err) {
-          if(err)
-          {
-            console.log(err);
-          }
-          else 
-          {
-            console.log("Successfully updated player with id: " + player._id);
-          }
-        });*/
-  });
-});
-
 app.post("/newPlayer", function(req, res){
   console.log("adding new player");
 
@@ -294,9 +262,7 @@ app.post("/newPlayer", function(req, res){
 
 //edit player page
 app.get("/players/:id/edit", function(req,res){
-  const id = _.capitalize(req.params.id);
-  
-  Player.findOne({_id: id}, function(err, foundPlayer){
+  Player.findOne({_id: req.params.id}, function(err, foundPlayer){
     if(!err){
       if(!foundPlayer){
         //player not found
@@ -309,9 +275,32 @@ app.get("/players/:id/edit", function(req,res){
   })
 });
 
+app.post("/players/:id/editPlayer", function(req, res){
+  Player.findByIdAndUpdate(req.params.id, {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    address: req.body.address,
+    suburb: req.body.suburb,
+    state: req.body.state,
+    postcode: req.body.postcode,
+    homeNumber: req.body.homeNumber,
+    moblieNumber: req.body.moblieNumber,
+    fax: req.body.faxNumber }, 
+    function(err) {
+      if(err)
+      {
+        console.log(err);
+      }
+      else 
+      {
+        console.log("Successfully updated player with id: " + req.params.id);
+        res.redirect("/players");
+      }
+  });
+});
+
 app.post("/players/:id/deletePlayer", function(req,res){
-  const id = _.capitalize(req.params.id);
-  Player.findByIdAndRemove(id, function(err){
+  Player.findByIdAndRemove(req.params.id, function(err){
     if (err) {
       console.log(err);
     } else {
