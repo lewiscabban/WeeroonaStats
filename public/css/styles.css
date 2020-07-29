@@ -18,6 +18,16 @@ body {
   margin: 50px auto;
 }
 
+h1 {
+  font-weight: bold;
+}
+
+label {
+  display: inline-block;
+  width: 10%;
+  text-align: left;
+}
+
 
 /*----Tables----*/
 .box-table {
@@ -51,7 +61,8 @@ body {
   color: #f5ab00;
 }
 
-/*----Player Page Tab Tables----*/
+
+/*----Info Tables----*/
 .project-tab {
   padding: 10%;
   margin-top: -8%;
@@ -92,6 +103,24 @@ body {
   font-weight: 600;
 }
 
+/*----Player Buttons----*/
+.add-button {
+  margin-top: 10px;
+}
+
+.edit-button {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.delete-form {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.personal-info {
+  padding-left: 50px;
+}
 
 /*----Home Page----*/
 .home-logo {
@@ -135,4 +164,28 @@ body {
 .home-nav-col:hover {
   text-decoration: none;
   background-color:#f2f2f2;
+}
+
+
+/*----Player Page----*/
+.crud-player {
+  margin-top: 3%;
+  text-align: center;
+}
+
+.form-inputs {
+  padding: 1em;
+}
+
+.submit-button {
+  border: 1px solid black;
+  background-color: #333;
+  color: #f5ab00;
+  margin-top: 2.5rem;
+  padding: 1rem 2rem;
+}
+
+.submit-button:hover {
+  color: white;
+  background-color: black;
 }
