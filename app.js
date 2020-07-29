@@ -309,6 +309,18 @@ app.get("/players/:id/edit", function(req,res){
   })
 });
 
+app.post("/players/:id/deletePlayer", function(req,res){
+  const id = _.capitalize(req.params.id);
+  Player.findByIdAndRemove(id, function(err){
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("the item was successfully deleted");
+      res.redirect("/players");
+    }
+  });
+});
+
 //handling requests made to the server
 app.get("/games", function(req, res) {
 

@@ -33,6 +33,7 @@
           <th scope="col">Name</th>
           <th scope="col">Total Games</th>
           <th scope="col">Total Goals</th>
+          <th scope="col">Delete Player</th>
         </tr>
       </thead>
       <tbody>
@@ -43,6 +44,7 @@
             <td><a href="/players/<%= player._id %>"><%= player.firstName %> <%= player.lastName %></a></td>
             <td><%= player.games %></td>
             <td><%= player.goals %></td>
+            <td><form action="/players/<%= player._id %>/deletePlayer" method="POST"><button type="submit" class="btn btn-danger">Delete</button></form></td>
           </tr>
         <% }); %>
       </tbody>
