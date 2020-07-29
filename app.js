@@ -209,6 +209,7 @@ app.get("/players", function(req, res) {
 //individual player page
 app.get("/players/:id", function(req,res){
   const id = _.capitalize(req.params.id);
+  console.log("Editing player with id: " + req.params.id);
   
   Player.findOne({_id: id}, function(err, foundPlayer){
     if(!err){
@@ -226,6 +227,38 @@ app.get("/players/:id", function(req,res){
 //add player page
 app.get("/addPlayer", function(req,res){
   res.render("addPlayer");
+});
+
+app.post("/players/:id/editPlayer", function(req, res){
+  console.log(req.params.id);
+  console.log(req.body.id);
+
+  Player.findOne({_id: id}, function(err, foundPlayer){
+    console.log("editing player with id: " + foundPlayer._id);
+
+    /*Player.updateOne({_id: foundPlayer._id}, {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      goals: req.body.goals,
+      games: req.body.games,
+      address: req.body.address,
+      suburb: req.body.suburb,
+      state: req.body.state,
+      postcode: req.body.postcode,
+      homeNumber: req.body.homeNumber,
+      moblieNumber: req.body.moblieNumber,
+      fax: req.body.faxNumber
+      }, function(err) {
+          if(err)
+          {
+            console.log(err);
+          }
+          else 
+          {
+            console.log("Successfully updated player with id: " + player._id);
+          }
+        });*/
+  });
 });
 
 app.post("/newPlayer", function(req, res){
